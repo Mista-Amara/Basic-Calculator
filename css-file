@@ -1,0 +1,93 @@
+/* General Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e2f;
+    color: #ffffff;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    background-color: #2b2b3c;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    width: 320px;
+}
+
+/* Display Screen */
+#display {
+    width: 100%;
+    height: 60px;
+    font-size: 2rem;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+    border: none;
+    border-radius: 10px;
+    background-color: #12121c;
+    color: #00ffcc;
+}
+
+/* Button Grid */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+/* Button Base Style */
+button {
+    padding: 20px;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 12px;
+    background-color: #3c3c50;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover + Press Effects */
+button:hover {
+    background-color: #505070;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+    background-color: #2e2e44;
+}
+
+/* Control Buttons */
+.control {
+    grid-column: span 2;
+    background-color: #ff4d4d;
+}
+
+.control:hover {
+    background-color: #ff3333;
+}
+
+/* Special Equals Animation */
+button.equals-animate {
+    animation: pulse 0.4s ease-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        background-color: #00ffc3;
+    }
+    50% {
+        transform: scale(1.15);
+        background-color: #00cc99;
+    }
+    100% {
+        transform: scale(1);
+        background-color: #00ffc3;
+    }
+}

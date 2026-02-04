@@ -1,0 +1,44 @@
+let display = document.getElementById("display");
+
+function appendNumber(char) {
+    display.value += char;
+}
+
+function clearDisplay() {
+    display.value = '';
+}
+
+function backspace() {
+    display.value = display.value.slice(0, -1);
+}
+
+function calculateResult() {
+    const equalsBtn = document.getElementById("equals");
+    equalsBtn.classList.add("equals-animate");
+
+    try {
+        display.value = eval(display.value.replace(/×/g, '*').replace(/÷/g, '/'));
+    } catch (e) {
+        display.value = "Error";
+    }
+
+    setTimeout(() => {
+        equalsBtn.classList.remove("equals-animate");
+    }, 400);
+}
+
+// Allow you to use the keyboard 
+document.addEventListener("keydown", function (event) {
+    const key = event.key;
+
+    if (!isNaN(key) || ['+', '-', '*', '/', '.'].includes(key)) {
+        appendNumber(key);
+    } else if (key === 'Enter') {
+        event.preventDefault();
+        calculateResult();
+    } else if (key === 'Backspace') {
+        backspace();
+    } else if (key.toLowerCase() === 'c') {
+        clearDisplay();
+    }
+});
